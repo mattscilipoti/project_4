@@ -1,0 +1,2 @@
+module NextdoorsHelper
+end
