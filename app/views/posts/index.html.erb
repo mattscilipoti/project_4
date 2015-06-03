@@ -1,5 +1,4 @@
 <div class='main'>
-	<div>Today is <%= Time.now.strftime("%A, %B %e, %Y")%>
 	</div>
   	
 	  	<div class='posts'>
@@ -8,7 +7,7 @@
 				<h2><%= x.name %></h2>
 					<div>
 						<p>
-							<%= x.username %>, <%= x.created_at.strftime("%l:%M %P, %m/%d/%y") %>
+							<%= x.uid %>, <%= x.created_at.strftime("%m/%d/%y") %>
 						</p>
 	 					<p class="post-body">
 	    					<%= x.description %>

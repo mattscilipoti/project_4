@@ -3,10 +3,10 @@
 	<h2><%= @post.name %></h2>
 	<div>
 		<p>
-			<%= @post.username %>, <%= @post.created_at.strftime("%l:%M %P, %m/%d/%y") %>
+			<%= @post.uid %>, <%= @post.created_at.strftime("%m/%d/%y") %>
 		</p>
-	 	<p class="post-body">
-	    	<%= @post.body %>
+	 	<p class="post-description">
+	    	<%= @post.description %>
 	 	</p>
 	</div>
 </div>
