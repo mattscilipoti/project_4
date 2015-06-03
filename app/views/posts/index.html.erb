@@ -1,10 +1,9 @@
 <div class='main'>
 	</div>
-  	
 	  	<div class='posts'>
-	    <h2>Today's Menu</h2>
+	    <h1>Today's Menu</h1>
 	    	<% @posts.each do |x| %>
-				<h2><%= x.name %></h2>
+				<h2><%= link_to x.name, x %></h2>
 					<div>
 						<p>
 							<%= x.uid %>, <%= x.created_at.strftime("%m/%d/%y") %>
