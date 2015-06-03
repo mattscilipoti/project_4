@@ -1,0 +1,28 @@
+<div class='main'>
+	<div>Today is <%= Time.now.strftime("%A, %B %e, %Y")%>
+	</div>
+  	
+	  	<div class='posts'>
+	    <h2>Today's Menu</h2>
+	    	<% @posts.each do |x| %>
+				<h2><%= x.name %></h2>
+					<div>
+						<p>
+							<%= x.username %>, <%= x.created_at.strftime("%l:%M %P, %m/%d/%y") %>
+						</p>
+	 					<p class="post-body">
+	    					<%= x.description %>
+	 					</p>
+	 					<p>
+	 						<%= x.price %>
+	 					</p>
+					</div>
+     		<% end %>
+	  	</div>
+
+	</div>
+<div>
+<% if user_signed_in? %>
+<%= link_to 'New Post', new_post_path, class: "btn btn-link" %>
+<% end %>
+</div>
