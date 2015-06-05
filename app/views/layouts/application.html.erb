@@ -26,7 +26,15 @@
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
 
-		<%= yield %>
+
+
+    <% if current_user && current_user.profile %>
+        <%= link_to 'Profile', profile_path(current_user.profile), class: "btn btn-link" %>
+        <%= link_to 'New Posts', new_post_path, class: "btn btn-link" %>
+    <% end %>
+
+      <%= link_to 'Show Posts', posts_path, class: "btn btn-link" %>
+<%= yield %>
 
 	</body>
 </html>

@@ -1,0 +1,31 @@
+<div class = "profile">
+	<h2><%= @profile.username %></h2>
+
+	<div>
+	 	<p class="bio">
+	    	BIO: <%= @profile.bio %>
+	 	</p>
+	 	<p class="location">
+	 		LOCATION: <%= @profile.location %>"
+	 	</p>
+
+	 	<div>
+	 		<h2>My Posts</h2>
+	    	<% @profile.posts.each do |x| %>
+
+				<p><%= link_to x.name, x %></p	>
+					<div>
+						<p>
+							<%= x.profile.username %>, <%= x.created_at.strftime("%m/%d/%y") %>
+						</p>
+	 					<p class="post-body">
+	    					<%= x.description %>
+	 					</p>
+	 					<p>
+	 						<%= number_to_currency(x.price) %>
+	 					</p>	 		 
+	 		<% end %>
+		</div>
+	</div>
+</div>
+</div>

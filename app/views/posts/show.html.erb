@@ -3,17 +3,53 @@
 	<h2><%= @post.name %></h2>
 	<div>
 		<p>
-			<%= @post.uid %>, <%= @post.created_at.strftime("%m/%d/%y") %>
+			<%= @post.profile.username %>, <%= @post.created_at.strftime("%m/%d/%y") %>
 		</p>
-	 	<p class="post-description">
+	 	<p>
 	    	<%= @post.description %>
 	 	</p>
+	 	<p>
+	 		<%= number_to_currency(@post.price) %>
+
+	 	</p>
+	 	  	<div>
+    	
+      		Taste : <%= rating_for @post, "taste", :star => 10 %>
+      	
+  			</div>
 	 	<div>
-		    <% if current_user == @post.user %>
+		    <% if current_user.profile == @post.profile %>
 		        <%= link_to "Edit", edit_post_path(@post) %>
 		        <%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure?"} %>
-		      <% end %>
+		    <% end %>
 
 		</div>
 	</div>
+  	
+	<div>
+
+    <div>
+    	<%= simple_form_for [@post.comment, @post] do |x| %>
+        	<%= x.input :body, as: :text %>
+        	<%= x.button :submit %>
+      	<% end %>
+    </div>
+    
+    <% if @post.comments.any? %>
+      	<h3>Comments</h3>
+    <% end %>  
+    
+    <% @post.comments.each do |x| %>
+      	<div class='comment'>
+        <p>
+        	<%= x.body %>
+        </p>
+        <p>
+        	<%= comment.profile.username %>, <%= comment.created_at.strftime("%l:%M %P, %m/%d/%y") %>
+        </p>
+
+      </div>
+    <% end %>
+  </div>
 </div>
+

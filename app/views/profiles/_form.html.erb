@@ -1,0 +1,10 @@
+<div class = "form">
+<%= simple_form_for @profile do |x| %>
+  <%= x.input :username %>
+  <%= x.input :bio, as: :text%>
+  <%= x.input :zipcode %>
+  <%= x.input :location %>
+  <%= x.button :submit %>
+<% end %>
+
+</div>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy], except: [:index, :show]
 
+  
 
   def index
   	@posts = Post.all
@@ -11,11 +11,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = current_user.posts.new
+    @post = current_user.profile.posts.new
   end
 
   def create
-    @post = current_user.posts.new(post_params)
+    @post = current_user.profile.posts.new(post_params)
     if @post.save
       redirect_to @post
     else
@@ -41,12 +41,12 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to root_path
+    redirect_to posts_path
   end
   
   private
   def post_params
-    params.require(:post).permit(:name, :description, :price, :user_id)
+    params.require(:post).permit(:name, :description, :price, :profile_id)
   end
 
 end

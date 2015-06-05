@@ -1,4 +1,5 @@
 <div class='main'>
+
 	</div>
 	  	<div class='posts'>
 	    <h1>Today's Menu</h1>
@@ -6,19 +7,17 @@
 				<h2><%= link_to x.name, x %></h2>
 					<div>
 						<p>
-							<%= x.uid %>, <%= x.created_at.strftime("%m/%d/%y") %>
+							<%= x.profile.username %>, <%= x.created_at.strftime("%m/%d/%y") %>
 						</p>
-	 					<p class="post-body">
-	    					<%= x.description %>
-	 					</p>
+
 	 					<p>
-	 						<%= x.price %>
+	 						<%= number_to_currency(x.price) %>
 	 					</p>
 					</div>
      		<% end %>
 	  	</div>
 
-	</div>
+	
 <div>
 <% if user_signed_in? %>
 <%= link_to 'New Post', new_post_path, class: "btn btn-link" %>

@@ -1,7 +1,8 @@
 class CreatePosts < ActiveRecord::Migration
   def change
     create_table :posts do |t|
-      t.belongs_to :user
+      
+      t.belongs_to :profile
     	t.string :name
       t.text :description
      	t.decimal :price

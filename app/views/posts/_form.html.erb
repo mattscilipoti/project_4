@@ -1,9 +1,9 @@
 <div class = "form">
 <%= simple_form_for @post do |x| %>
-  <%= x.input :name %>
+  <%= x.input :name, :label => "Menu"%>
   <%= x.input :description, as: :text%>
   <%= x.input :price, :hint => "(USD)" %>
-
+  
   <%= x.button :submit %>
 <% end %>
 
