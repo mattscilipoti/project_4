@@ -1,8 +1,10 @@
-<div class='main'>
 
-	</div>
+
+<div class='container-posts'>
+
+	
 	  	<div class='posts'>
-	    <h1>Today's Menu</h1>
+	    
 	    	<% @posts.each do |x| %>
 				<h2><%= link_to x.name, x %></h2>
 					<div>
@@ -17,7 +19,7 @@
      		<% end %>
 	  	</div>
 
-	
+</div>	
 <div>
 <% if user_signed_in? %>
 <%= link_to 'New Post', new_post_path, class: "btn btn-link" %>

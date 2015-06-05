@@ -1,0 +1,8 @@
+
+    <%= f.fields_for :profile do |x| %>
+      <h2><%= x.label :first_name %></h2>
+      <p><%= x.text_field :first_name %></p>
+
+      <h2><%= profile_form.label :last_name %></h2>
+      <p><%= profile_form.text_field :last_name %></p>
+    <% end %>

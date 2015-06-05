@@ -16,24 +16,62 @@
 		  <p class="alert alert-danger"><%= alert %></p>
 		<% end %>
 
-		<p class="navbar-text pull-right">
-<% if user_signed_in? %>
-  Logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-<% end %>
 
 
 
-    <% if current_user && current_user.profile %>
-        <%= link_to 'Profile', profile_path(current_user.profile), class: "btn btn-link" %>
-        <%= link_to 'New Posts', new_post_path, class: "btn btn-link" %>
-    <% end %>
 
-      <%= link_to 'Show Posts', posts_path, class: "btn btn-link" %>
+
+
+
+
+<nav class="navbar navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-3">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">home chef</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+     
+       
+
+      <ul class="nav navbar-nav navbar-right">
+      
+      <li><%= link_to "Browse", posts_path %></li>
+       <% if current_user == @profile %>
+      <li class="nav navbar-nav navbar-right"><%= link_to "Profile", profile_path %></li>
+      <% end %>
+
+      </ul>
+      
+      <p class="navbar-text"><span class="glyphicon" aria-hidden="true"></span><%= current_user.email %></p>
+
+        <li class="navbuttons">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon icon-th-list" aria-hidden="true"></span> <span class="caret"></span></a>
+          </li>
+          <ul class="dropdown-menu" role="menu">
+          <% if current_user %>
+            <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+             <li class="divider"></li>
+            <li><%= link_to "Log in", new_user_session_path %></li>
+          <% end %>
+           </ul> 
+          
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
 <%= yield %>
 
 	</body>
